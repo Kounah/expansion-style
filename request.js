@@ -14,7 +14,7 @@
 function request(form) {
   return new Promise(resolve => {
     const req = new XMLHttpRequest();
-  
+    const data = new FormData(form);
     req.open(form.getAttribute('method'), form.getAttribute('action'));
     req.addEventListener('load', function() {
       resolve({
@@ -26,6 +26,6 @@ function request(form) {
         contentType: this.getResponseHeader('content-type')
       });
     });
-    req.send(new FormData(form));
+    req.send(data);
   })
 }
