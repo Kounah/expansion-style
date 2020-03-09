@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <link href="/dist/style.css" rel="stylesheet">
+ </head>
+ <body>
+  <div class="flex col fill">
+    <div id="conversation" class="item stretch">
+      <div class="line request">
+        <div class="message sent">Test Request</div>
+      </div>
+      <div class="line response">
+        <div class="message received">Test Response</div>
+      </div>
+      <div class="line request">
+        <div class="message error">Test Request Error</div>
+      </div>
+      <div class="line response">
+        <div class="message error">Test Response Error</div>
+      </div>
+    </div>
+    <form action="http://localhost:4242" method="POST" id="chatform"
+    class="item end flex row">
+      <input type="text" class="item start stretch" name="message" id="message">
+      <input type="hidden" name="page_url" id="page_url"/>
+      <button type="submit" class="item end">Send</button>
+    </form>
+  </div>
+  <script src="popup.js"></script>
+ </body>
+</html>

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+$background: #40404f;
+$text: #c0c0cf;
+$accent: #ff8000;
+$error: #ff4060;
+
+html, body {
+  padding: 0;
+  margin: 0;
+  color: $text;
+  font-family: -apple-system, 'Comfortaa', sans-serif;
+}
+
+body {
+  background-color: $background;
+  padding: 1em;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+}
+
+#conversation {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: .5em;
+  background-color: lighten($background, 5%);
+  border: solid 1pt darken($background, 10%);
+  border-radius: 4px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    border-left: solid 1pt darken($background, 10%);
+    width: 12px;
+    padding: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: auto;
+    background-color: darken($background, 10%);
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .line {
+    display: block;
+    margin: 4px 0;
+
+    &.request {
+      text-align: right;
+    }
+
+    &.response {
+      text-align: left;
+    }
+
+    .message {
+      display: inline-block;
+      box-sizing: border-box;
+      padding: .25em;
+      background-color: lighten($background, 10%);
+      border: solid 1px darken($background, 10%);
+      border-radius: 4px;
+      max-width: 60%;
+
+      &.error {
+        border-color: $error;
+      }
+    }
+  }
+
+}
+
+input, button {
+  padding: .5em;
+  background: linear-gradient(to bottom,
+    lighten($background, 5%) 0%,
+    lighten($background, 15%) 100%
+  );
+  color: $text;
+  border-width: 1pt;
+  border-style: solid;
+  border-color: darken($background, 10%);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 2px 0;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+  }
+
+  &[type=submit],
+  &[type=button] {
+    background: linear-gradient(to bottom,
+      lighten($background, 15%) 0%,
+      lighten($background, 5%) 100%
+    );
+
+    transition: filter .2s ease;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+}
+
+.flex {
+  display: flex;
+
+  &.row {
+    flex-direction: row;
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.col {
+    flex-direction: column;
+    &.reverse {
+      flex-direction: column-reverse;
+    }
+
+    .item {
+      width: 100%;
+    }
+  }
+
+  .item {
+    flex: 0 1 0;
+
+    &.stretch {
+      flex: 1 1 0;
+    }
+
+    &.start {
+      align-self: flex-start;
+    }
+
+    &.center {
+      align-self: center;
+    }
+
+    &.end {
+      align-self: flex-end;
+    }
+  }
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: .5em .5em;
+}
